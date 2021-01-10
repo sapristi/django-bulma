@@ -150,6 +150,10 @@ def is_file(field):
 def addclass(field, css_class):
     if len(field.errors) > 0:
         css_class += ' is-danger'
+
+    if field.field.required:
+        css_class += ' is-primary'
+
     field_classes = field.field.widget.attrs.get('class', '')
     field_classes += f' {css_class}'
     return field.as_widget(attrs={"class": field_classes})

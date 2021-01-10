@@ -1,5 +1,6 @@
 {% load bulma_tags %}
 <div class="field">
+  <!-- REQUIRED {{ field.field.required }} - {{ form.required_css_class  }} - -->
   {% if field|is_checkbox %}
 
     <div class="control {{ classes.single_value }}">
@@ -82,7 +83,7 @@
     <label class="label {{ classes.label }}
         {% if field.field.required %}{{ form.required_css_class }}{% endif %}">{{ field.label }}</label>
     <div class="control {{ classes.value }}">
-      <span class="select{% if field|is_multiple_select %} is-multiple{% endif %}{% if field.errors|length > 0 %} is-danger{% endif %}">
+      <span class="select{% if field|is_multiple_select %} is-multiple{% endif %}{% if field.errors|length > 0 %} is-danger{% endif %}{% if field.field.required %} is-primary{% endif %}">
         {{ field }}
       </span>
       {% for error in field.errors %}
